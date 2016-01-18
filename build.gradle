@@ -1,0 +1,17 @@
+apply plugin: 'scala'
+apply plugin: 'idea'
+
+group 'org.squesh.deloris'
+version '0.0.1'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies{
+    ext.scala = '2.11.7'
+
+    compile "org.scala-lang:scala-library:$scala"
+}
