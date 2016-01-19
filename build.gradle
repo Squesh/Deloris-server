@@ -1,7 +1,7 @@
 apply plugin: 'scala'
 apply plugin: 'idea'
 
-group 'org.squesh.deloris'
+group 'com.squesh.deloris'
 version '0.0.1'
 
 repositories {
