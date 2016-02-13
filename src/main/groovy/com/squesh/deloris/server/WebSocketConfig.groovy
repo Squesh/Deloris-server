@@ -3,20 +3,33 @@ package com.squesh.deloris.server
 import org.springframework.context.annotation.Configuration
 import org.springframework.messaging.simp.config.MessageBrokerRegistry
 import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer
+import org.springframework.web.socket.config.annotation.EnableWebSocket
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry
 
 @Configuration
 @EnableWebSocketMessageBroker
+@EnableWebSocket
 class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
-    void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic")
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        config.enableSimpleBroker("/topic");
+        config.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
-    void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/get-players", "/move-player")
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/hello").withSockJS();
     }
+
+//    @Override
+//    void configureMessageBroker(MessageBrokerRegistry config) {
+//        config.enableSimpleBroker("/topic")
+//    }
+//
+//    @Override
+//    void registerStompEndpoints(StompEndpointRegistry registry) {
+//        registry.addEndpoint("/get-players", "/move-player")
+//    }
 }
