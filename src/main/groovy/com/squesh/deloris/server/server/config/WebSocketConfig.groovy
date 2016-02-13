@@ -1,4 +1,4 @@
-package com.squesh.deloris.server
+package com.squesh.deloris.server.server.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.messaging.simp.config.MessageBrokerRegistry
