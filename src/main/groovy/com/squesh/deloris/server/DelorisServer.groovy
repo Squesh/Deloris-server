@@ -9,7 +9,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket
 @EnableWebSocket
 @EnableWebMvc
 class DelorisServer {
-    public static void main(String[] args) {
-        SpringApplication.run(DelorisServer.class, args);
+    static void main(String[] args) {
+        SpringApplication.run(DelorisServer.class, args)
     }
 }
