@@ -1,8 +1,32 @@
-apply plugin: 'scala'
+buildscript {
+    ext {
+        springBootVersion = '1.3.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'groovy'
 apply plugin: 'idea'
+apply plugin: 'spring-boot'
 
 group 'com.squesh.deloris'
 version '0.0.1'
+
+jar {
+    baseName = 'deloris-server'
+    version = '0.0.1'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
 
 repositories {
     mavenLocal()
@@ -10,8 +34,15 @@ repositories {
     jcenter()
 }
 
-dependencies{
-    ext.scala = '2.11.7'
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-websocket'
+    compile 'org.springframework:spring-messaging'
+    compile 'org.codehaus.groovy:groovy'
 
-    compile "org.scala-lang:scala-library:$scala"
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+task stage {
+    dependsOn build
 }
