@@ -16,13 +16,10 @@ class PlayerService {
     }
 
     void movePlayer(PlayerMovementMessage move) {
-        players
-                .stream()
-                .filter( { player -> player.token == move.token } )
-                .forEach( { player -> player.x = move.newX; player.y = move.newY } )
+        players.find({ it.token == move.token }).each({ it.x = move.newX; it.y = move.newY })
     }
 
-    void deregisterPlayer(String token) {
-        players.removeIf( {player -> player.token == token} )
+    void unregisterPlayer(String token) {
+        players.removeAll({ it.token == token })
     }
 }

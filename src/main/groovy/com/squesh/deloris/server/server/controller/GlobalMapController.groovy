@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin
 
 @Controller
 @CrossOrigin
-class GameController {
+class GlobalMapController {
     @Autowired
     PlayerService playerService
 
@@ -25,6 +25,11 @@ class GameController {
     @SendTo("/topic/registering-player")
     Player registerPlayer(String name) {
         return playerService.registerPlayer(name)
+    }
+
+    @MessageMapping("/unregister-player")
+    void unregisterPlayer(String token) {
+        playerService.unregisterPlayer(token)
     }
 
     @MessageMapping("/move-player")
