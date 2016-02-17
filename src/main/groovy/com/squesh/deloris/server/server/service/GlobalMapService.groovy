@@ -1,28 +1,28 @@
 package com.squesh.deloris.server.server.service
 
-import com.squesh.deloris.server.core.Player
-import com.squesh.deloris.server.server.message.PlayerMovementMessage
+import com.squesh.deloris.server.core.Hero
+import com.squesh.deloris.server.server.message.HeroMovementMessage
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
 class GlobalMapService {
     @Autowired
-    PlayerService playerService
+    HeroService heroService
 
-    List<Player> getPlayers() {
-        playerService.players
+    List<Hero> getHeroes() {
+        heroService.heroes
     }
 
-    Player registerPlayer(String name) {
-        playerService.registerPlayer(name)
+    Hero registerHero(String name) {
+        heroService.registerHero(name)
     }
 
-    void unregisterPlayer(String token) {
-        playerService.unregisterPlayer(token)
+    void unregisterHero(String token) {
+        heroService.unregisterHero(token)
     }
 
-    void movePlayer(PlayerMovementMessage playerMovementMessage) {
-        playerService.movePlayer(playerMovementMessage)
+    void moveHero(HeroMovementMessage heroMovementMessage) {
+        heroService.moveHero(heroMovementMessage)
     }
 }

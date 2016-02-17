@@ -3,7 +3,7 @@ package com.squesh.deloris.server.core
 import groovy.transform.Canonical
 
 @Canonical
-class Player {
+class Hero {
     String token
     String name
     int x

@@ -1,7 +1,7 @@
 package com.squesh.deloris.server.server.controller
 
-import com.squesh.deloris.server.core.Player
-import com.squesh.deloris.server.server.message.PlayerMovementMessage
+import com.squesh.deloris.server.core.Hero
+import com.squesh.deloris.server.server.message.HeroMovementMessage
 import com.squesh.deloris.server.server.service.GlobalMapService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.messaging.handler.annotation.MessageMapping
@@ -15,27 +15,27 @@ class GlobalMapController {
     @Autowired
     GlobalMapService globalMapService
 
-    @MessageMapping("/get-players")
-    @SendTo("/topic/init-players")
-    List<Player> getPlayers() {
-        globalMapService.players
+    @MessageMapping("/get-heroes")
+    @SendTo("/topic/init-heroes")
+    List<Hero> getHeroes() {
+        globalMapService.heroes
     }
 
-    @MessageMapping("/register-player")
-    @SendTo("/topic/registering-player")
-    Player registerPlayer(String name) {
-        globalMapService.registerPlayer(name)
+    @MessageMapping("/register-hero")
+    @SendTo("/topic/registering-hero")
+    Hero registerHero(String name) {
+        globalMapService.registerHero(name)
     }
 
-    @MessageMapping("/unregister-player")
-    void unregisterPlayer(String token) {
-        globalMapService.unregisterPlayer(token)
+    @MessageMapping("/unregister-hero")
+    void unregisterHero(String token) {
+        globalMapService.unregisterHero(token)
     }
 
-    @MessageMapping("/move-player")
-    @SendTo("/topic/players")
-    List<Player> movePlayer(PlayerMovementMessage playerMovementMessage) {
-        globalMapService.movePlayer(playerMovementMessage)
-        globalMapService.players
+    @MessageMapping("/move-hero")
+    @SendTo("/topic/heroes")
+    List<Hero> moveHero(HeroMovementMessage heroMovementMessage) {
+        globalMapService.moveHero(heroMovementMessage)
+        globalMapService.heroes
     }
 }
