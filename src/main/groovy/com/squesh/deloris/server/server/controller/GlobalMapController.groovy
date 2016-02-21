@@ -15,13 +15,11 @@ class GlobalMapController {
     GlobalMapService globalMapService
 
     @MessageMapping("/get-heroes")
-    @SendTo("/topic/init-heroes")
     List<Hero> getHeroes() {
         globalMapService.heroes
     }
 
     @MessageMapping("/register-hero")
-    @SendTo("/topic/registering-hero")
     Hero registerHero(String name) {
         globalMapService.registerHero(name)
     }
@@ -32,7 +30,6 @@ class GlobalMapController {
     }
 
     @MessageMapping("/move-hero")
-    @SendTo("/topic/heroes")
     List<Hero> moveHero(HeroMovementMessage heroMovementMessage) {
         globalMapService.moveHero(heroMovementMessage)
         globalMapService.heroes

@@ -4,19 +4,10 @@ import com.squesh.deloris.server.core.Hero
 import com.squesh.deloris.server.server.message.HeroMovementMessage
 import org.springframework.stereotype.Service
 
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
-
 @Service
 class HeroService {
     List<Hero> heroes = []
     def random = new Random()
-
-    def executorService = Executors.newScheduledThreadPool(2)
-
-    HeroService() {
-        executorService.scheduleAtFixedRate({heroes = []}, 1, 1, TimeUnit.HOURS)
-    }
 
     Hero registerHero(String name) {
         def hero = new Hero(UUID.randomUUID().toString(), name, random.nextInt(20), random.nextInt(20))
