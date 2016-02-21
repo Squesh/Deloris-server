@@ -11,7 +11,7 @@ class GlobalMapService {
     @Autowired
     HeroService heroService
 
-    @SendTo("/topic/heroes")
+    @SendTo(value = ["/topic/heroes", "/topic/init-heroes"])
     List<Hero> getHeroes() {
         heroService.heroes
     }
