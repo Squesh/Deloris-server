@@ -4,6 +4,7 @@ import com.squesh.deloris.server.core.Hero
 import com.squesh.deloris.server.server.message.HeroMovementMessage
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.messaging.handler.annotation.SendTo
+import org.springframework.messaging.simp.SimpMessagingTemplate
 import org.springframework.stereotype.Service
 
 @Service
@@ -11,14 +12,16 @@ class GlobalMapService {
     @Autowired
     HeroService heroService
 
-    @SendTo(value = ["/topic/heroes", "/topic/init-heroes"])
-    List<Hero> getHeroes() {
-        heroService.heroes
+    @Autowired
+    SimpMessagingTemplate template;
+
+    void getHeroes() {
+        template.convertAndSend("/topic/init-heroes", heroService.heroes)
     }
 
-    @SendTo("/topic/registering-hero")
-    Hero registerHero(String name) {
-        heroService.registerHero(name)
+    void registerHero(String name) {
+        def hero = heroService.registerHero(name)
+        template.convertAndSend("/topic/registering-hero", hero)
     }
 
     void unregisterHero(String token) {
@@ -27,5 +30,6 @@ class GlobalMapService {
 
     void moveHero(HeroMovementMessage heroMovementMessage) {
         heroService.moveHero(heroMovementMessage)
+        template.convertAndSend("/topic/heroes", heroService.heroes)
     }
 }

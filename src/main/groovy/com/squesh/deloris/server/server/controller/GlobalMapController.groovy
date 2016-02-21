@@ -1,13 +1,10 @@
 package com.squesh.deloris.server.server.controller
 
-import com.squesh.deloris.server.core.Hero
 import com.squesh.deloris.server.server.message.HeroMovementMessage
 import com.squesh.deloris.server.server.service.GlobalMapService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.messaging.handler.annotation.MessageMapping
-import org.springframework.messaging.handler.annotation.SendTo
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.CrossOrigin
 
 @Controller
 class GlobalMapController {
@@ -15,12 +12,12 @@ class GlobalMapController {
     GlobalMapService globalMapService
 
     @MessageMapping("/get-heroes")
-    List<Hero> getHeroes() {
-        globalMapService.heroes
+    void getHeroes() {
+        globalMapService.getHeroes()
     }
 
     @MessageMapping("/register-hero")
-    Hero registerHero(String name) {
+    void registerHero(String name) {
         globalMapService.registerHero(name)
     }
 
@@ -30,8 +27,7 @@ class GlobalMapController {
     }
 
     @MessageMapping("/move-hero")
-    List<Hero> moveHero(HeroMovementMessage heroMovementMessage) {
+    void moveHero(HeroMovementMessage heroMovementMessage) {
         globalMapService.moveHero(heroMovementMessage)
-        globalMapService.heroes
     }
 }
