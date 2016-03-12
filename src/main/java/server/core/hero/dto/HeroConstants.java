@@ -1,4 +1,4 @@
-package server.core.dto;
+package server.core.hero.dto;
 
 public class HeroConstants {
     public static final int INITIAL_EXP = 0;

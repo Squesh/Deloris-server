@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 public class HeroService {
-    private List<Hero> heroes = new ArrayList<Hero>();
+    private List<Hero> heroes = new ArrayList<>();
     private Random random = new Random();
 
     public Hero registerHero(String name) {

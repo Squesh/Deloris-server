@@ -1,4 +1,4 @@
-package server.core;
+package server.core.map;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ public class GlobalMap {
     public GlobalMap(int sizeWidth, int sizeHeight) {
         for (int i = 0; i < sizeWidth; i++) {
             for (int j = 0; j < sizeHeight; j++) {
-                Cell cell = new Cell(i, j);
+                Cell cell = new Cell(i, j, TerrainType.EARTH);
                 cells.add(cell);
             }
         }
