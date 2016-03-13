@@ -1,4 +1,4 @@
 package server.core.hero.skill;
 
-public class Bless extends Buff {
+public class Bless extends PositiveBuff {
 }
