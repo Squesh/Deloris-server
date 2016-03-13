@@ -1,6 +1,6 @@
 package server.server.service;
 
-import server.core.Hero;
+import server.core.hero.Hero;
 import server.server.message.HeroMovementMessage;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +21,14 @@ public class HeroService {
     }
 
     public void moveHero(HeroMovementMessage move) {
-        // todo: find hero with this token and update coordinates
+        heroes.stream().filter(hero -> hero.getToken().equals(move.getToken())).forEach(hero -> {
+            hero.setX(move.getNewX());
+            hero.setY(move.getNewY());
+        });
     }
 
     public void unregisterHero(String token) {
-        // todo: remove hero with this token from list
+        heroes.removeIf(hero -> hero.getToken().equals(token));
     }
 
     public List<Hero> getHeroes() {

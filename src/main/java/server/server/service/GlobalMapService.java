@@ -1,6 +1,6 @@
 package server.server.service;
 
-import server.core.Hero;
+import server.core.hero.Hero;
 import server.server.message.HeroMovementMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

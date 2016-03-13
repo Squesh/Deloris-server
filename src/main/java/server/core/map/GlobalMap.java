@@ -16,8 +16,12 @@ public class GlobalMap {
     }
 
     public Cell getCellAt(int x, int y) {
-        // todo: get cell at x/y
-        return null;
+        for (Cell cell : cells) {
+            if (cell.getX() == x && cell.getY() == y) {
+                return cell;
+            }
+        }
+        throw new RuntimeException("dafuq");
     }
 
     public List<Cell> getCells() {

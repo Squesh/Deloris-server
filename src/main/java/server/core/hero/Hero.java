@@ -1,4 +1,4 @@
-package server.core;
+package server.core.hero;
 
 public class Hero {
     private String token;
