@@ -1,4 +1,4 @@
-package backend.server.entity;
+package backend.server.user;
 
 import javax.persistence.*;
 
@@ -11,6 +11,13 @@ public class User {
 
     private String username;
     private String password;
+
+    public User() {}
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;

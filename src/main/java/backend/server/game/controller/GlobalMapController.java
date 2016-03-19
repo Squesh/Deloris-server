@@ -1,7 +1,7 @@
-package backend.server.controller;
+package backend.server.game.controller;
 
-import backend.server.message_dto.HeroMovementMessage;
-import backend.server.service.GlobalMapService;
+import backend.server.game.message_dto.HeroMovementMessage;
+import backend.server.game.service.GlobalMapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;

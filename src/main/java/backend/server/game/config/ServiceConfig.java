@@ -1,4 +1,4 @@
-package backend.server.config;
+package backend.server.game.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -11,7 +11,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 @Configuration
 @EnableWebSocketMessageBroker
 @EnableWebSocket
-@EnableJpaRepositories("backend.server.repository")
+@EnableJpaRepositories("backend.server")
 public class ServiceConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override

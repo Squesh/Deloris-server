@@ -1,7 +1,7 @@
-package backend.server.service;
+package backend.server.game.service;
 
 import backend.core.hero.Hero;
-import backend.server.message_dto.HeroMovementMessage;
+import backend.server.game.message_dto.HeroMovementMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;

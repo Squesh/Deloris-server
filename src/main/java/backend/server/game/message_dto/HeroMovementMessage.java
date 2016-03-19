@@ -1,4 +1,4 @@
-package backend.server.message_dto;
+package backend.server.game.message_dto;
 
 public class HeroMovementMessage {
     private String token;
