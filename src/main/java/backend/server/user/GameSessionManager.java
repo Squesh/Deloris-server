@@ -2,21 +2,25 @@ package backend.server.user;
 
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
 public class GameSessionManager {
-    private Set<UUID> tokens = new HashSet<>();
+    Map<String, UUID> playersTokens = new HashMap<>();
 
-    public UUID registerNewToken() {
-        UUID uuid = UUID.randomUUID();
-        tokens.add(uuid);
-        return uuid;
+    public UUID generateNewToken(String username) {
+        if (playersTokens.containsKey(username)) {
+            return null;
+        } else {
+            UUID token = UUID.randomUUID();
+            playersTokens.put(username, token);
+            return token;
+        }
     }
 
-    public void deregisterToken(UUID uuid) {
-        tokens.remove(uuid);
+    public void shutdownSession(String username, UUID token) {
+        playersTokens.remove(username, token);
     }
 }

@@ -14,8 +14,9 @@ public class UserService {
     private GameSessionManager gameSessionManager;
 
     public UUID isCorrectUser(User user) {
-        if (userRepository.findByUsernameAndPassword(user.getUsername(), hashPassword(user.getPassword())) != null) {
-            return gameSessionManager.registerNewToken();
+        String username = user.getUsername();
+        if (userRepository.findByUsernameAndPassword(username, hashPassword(user.getPassword())) != null) {
+            return gameSessionManager.generateNewToken(username);
         } else {
             return null;
         }
