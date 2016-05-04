@@ -3,6 +3,8 @@ package backend.server.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 @Service
@@ -12,6 +14,12 @@ public class UserService {
 
     @Autowired
     private GameSessionManager gameSessionManager;
+
+    private MessageDigest md;
+
+    public UserService() throws NoSuchAlgorithmException {
+        md = MessageDigest.getInstance("SHA-256");
+    }
 
     public UUID isCorrectUser(User user) {
         String username = user.getUsername();
@@ -33,7 +41,7 @@ public class UserService {
     }
 
     private String hashPassword(String password) {
-        // todo
-        return password + "super_hash_suffix";
+        byte[] digest = md.digest(password.getBytes());
+        return String.format("%064x", new java.math.BigInteger(1, digest));
     }
 }
