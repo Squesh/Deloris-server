@@ -5,7 +5,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 public class HashUtility {
-    private static final int SALT_LENGTH = 15;
+    private static final int START_SALT_LENGTH = 10;
+    private static final int ENDING_SALT_LENGTH = 20;
 
     private MessageDigest md;
     private Random random;
@@ -31,14 +32,22 @@ public class HashUtility {
 
     public boolean isHashEquals(String sample, String hash) {
         String sampleHash = hashPassword(sample);
-        return sampleHash.substring(0, sampleHash.length() - SALT_LENGTH).equals(hash.substring(0, hash.length() - SALT_LENGTH));
+        String noSaltSampleHash = sampleHash.substring(START_SALT_LENGTH, sampleHash.length() - ENDING_SALT_LENGTH);
+        String noSaltHash = hash.substring(START_SALT_LENGTH, hash.length() - ENDING_SALT_LENGTH);
+        return noSaltSampleHash.equals(noSaltHash);
     }
 
     private String appendSalt(String hashed) {
-        StringBuilder builder = new StringBuilder(hashed);
-        for (int i = 0; i < SALT_LENGTH; i++) {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < START_SALT_LENGTH; i++) {
             builder.append(alphabet[randomInt(0, alphabet.length - 1)]);
         }
+        builder.append(hashed);
+        for (int i = 0; i < ENDING_SALT_LENGTH; i++) {
+            builder.append(alphabet[randomInt(0, alphabet.length - 1)]);
+        }
+
         return builder.toString();
     }
 
