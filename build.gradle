@@ -44,7 +44,6 @@ dependencies {
 
     /* data */
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
-    compile "org.springframework.boot:spring-boot-starter-data-mongodb"
     compile "org.hsqldb:hsqldb:2.3.3"
 
     /* other */
