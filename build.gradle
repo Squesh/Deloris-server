@@ -21,12 +21,8 @@ jar {
     baseName = 'deloris-server'
     version = '0.0.1'
 }
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
+sourceCompatibility = 1.8
 
 repositories {
     mavenLocal()
