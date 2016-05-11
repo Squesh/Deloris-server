@@ -10,15 +10,10 @@ public class HashUtility {
 
     private MessageDigest md;
     private Random random;
-    private char[] alphabet;
-    private static final String ALPHABET_BASE = "1234567890abcdef";
+    private char[] alphabet = new char[] {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f'};
 
     public HashUtility() {
         random = new Random();
-        alphabet = new char[ALPHABET_BASE.length()];
-        for (int i = 0; i < ALPHABET_BASE.length(); i++) {
-            alphabet[i] = ALPHABET_BASE.charAt(i);
-        }
         try {
             md = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException ignored) {}
