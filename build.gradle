@@ -30,9 +30,12 @@ repositories {
     jcenter()
 }
 
-dependencies {
-    ext.guava = '19.0'
+ext {
+    guava = '19.0'
+    rethinkdb = '2.3.1'
+}
 
+dependencies {
     /* web */
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.springframework.boot:spring-boot-starter-websocket"
@@ -41,6 +44,7 @@ dependencies {
     /* data */
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
     compile "org.hsqldb:hsqldb:2.3.3"
+    compile "com.rethinkdb:rethinkdb-driver:$rethinkdb"
 
     /* other */
     compile "com.google.guava:guava:$guava"
