@@ -9,14 +9,21 @@ repositories {
     jcenter()
 }
 
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.useAnt = false
+}
+
+ext {
+    scalaVersion = '2.11.7'
+    akkaVersion = '2.4.7'
+}
+
 dependencies {
-    compile 'org.scala-lang:scala-library:2.11.7'
-    compile "org.scala-lang:scala-compiler:2.11.7"
+    compile "org.scala-lang:scala-library:${scalaVersion}"
+    compile "org.scala-lang:scala-compiler:${scalaVersion}"
 
-    compile 'com.typesafe.akka:akka-actor_2.11:2.4.7'
-    compile 'com.typesafe.akka:akka-stream_2.11:2.4.7'
-    compile 'com.typesafe.akka:akka-http-experimental_2.11:2.4.7'
-//    compile 'com.typesafe.akka:akka-http-jackson-experimental_2.11:2.4.7'
-
-    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-scala_2.11', version: '2.7.4'
+    compile "com.typesafe.akka:akka-actor_2.11:${akkaVersion}"
+    compile "com.typesafe.akka:akka-stream_2.11:${akkaVersion}"
+    compile "com.typesafe.akka:akka-http-experimental_2.11:${akkaVersion}"
+    compile "com.typesafe.akka:akka-http-spray-json-experimental_2.11:${akkaVersion}"
 }
