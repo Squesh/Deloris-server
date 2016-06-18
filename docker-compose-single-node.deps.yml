@@ -1,5 +1,0 @@
-rethink-1:
-  image: rethinkdb:2.3
-  ports:
-    - 28080:8080
-    - 28015:18015

@@ -1,0 +1,22 @@
+group 'org.deloris'
+version '0.1'
+
+apply plugin: 'scala'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.7'
+    compile "org.scala-lang:scala-compiler:2.11.7"
+
+    compile 'com.typesafe.akka:akka-actor_2.11:2.4.7'
+    compile 'com.typesafe.akka:akka-stream_2.11:2.4.7'
+    compile 'com.typesafe.akka:akka-http-experimental_2.11:2.4.7'
+//    compile 'com.typesafe.akka:akka-http-jackson-experimental_2.11:2.4.7'
+
+    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-scala_2.11', version: '2.7.4'
+}
