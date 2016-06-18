@@ -1,0 +1,15 @@
+group 'org.deloris'
+version '0.1'
+
+apply plugin: 'scala'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.7'
+    compile "org.scala-lang:scala-compiler:2.11.7"
+}
