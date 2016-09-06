@@ -13,7 +13,7 @@ object UserService {
   def registerNewUser(user: User) : Boolean = {
     UserStorage.isUserExisted(user) match {
       case true => false
-      case false => { UserStorage.registerUser(user); true }
+      case false => UserStorage.registerUser(user); true
     }
   }
 }

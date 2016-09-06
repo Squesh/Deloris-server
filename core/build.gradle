@@ -9,7 +9,15 @@ repositories {
     jcenter()
 }
 
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.useAnt = false
+}
+
+ext {
+    scalaVersion = '2.11.7'
+}
+
 dependencies {
-    compile 'org.scala-lang:scala-library:2.11.7'
-    compile "org.scala-lang:scala-compiler:2.11.7"
+    compile "org.scala-lang:scala-library:${scalaVersion}"
+    compile "org.scala-lang:scala-compiler:${scalaVersion}"
 }
