@@ -1,3 +1,3 @@
 package org.deloris.core.effect
 
-trait PassiveEffect {}
+trait PassiveEffect extends Effect {}

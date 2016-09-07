@@ -10,6 +10,4 @@ class Equipment {
   var gloves: Gloves
   var helmet: Helmet
   var amulet: Amulet
-  var ringL: Ring
-  var ringR: Ring
 }

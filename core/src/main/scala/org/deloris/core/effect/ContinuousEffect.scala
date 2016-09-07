@@ -1,5 +1,5 @@
 package org.deloris.core.effect
 
-trait ContinuousEffect {
+trait ContinuousEffect extends Effect {
   val duration: Int
 }
