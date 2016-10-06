@@ -1,4 +1,4 @@
-group 'org.deloris'
+group 'org.squesh'
 version '0.1'
 
 apply plugin: 'scala'
