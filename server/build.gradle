@@ -15,7 +15,7 @@ tasks.withType(ScalaCompile) {
 
 ext {
     scalaVersion = '2.11.7'
-    akkaVersion = '2.4.7'
+    akkaVersion = '2.4.11'
 }
 
 dependencies {
@@ -26,4 +26,6 @@ dependencies {
     compile "com.typesafe.akka:akka-stream_2.11:${akkaVersion}"
     compile "com.typesafe.akka:akka-http-experimental_2.11:${akkaVersion}"
     compile "com.typesafe.akka:akka-http-spray-json-experimental_2.11:${akkaVersion}"
+    compile "com.typesafe.akka:akka-slf4j_2.11:${akkaVersion}"
+
 }

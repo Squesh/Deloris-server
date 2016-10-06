@@ -7,13 +7,17 @@ import scala.collection.mutable
  */
 
 object UserStorage {
-  val users = new mutable.HashMap[String, User]()
+  val users = new mutable.HashMap[String, String]() // login -> password ?
 
-  def isUserExisted(user: User): Boolean = {
-    users.contains(user.name)
+  def isUserExisted(name: String): Boolean = {
+    users.contains(name)
   }
 
-  def registerUser(user: User): Unit = {
-    users.put(user.name, user)
+  def checkCredentials(credentials: Credentials): Boolean = {
+    users.getOrElse(credentials.name, "") == HashApplier.hashString(credentials.password)
+  }
+
+  def registerUser(credentials: Credentials): Unit = {
+    users.put(credentials.name, HashApplier.hashString(credentials.password))
   }
 }

@@ -18,13 +18,13 @@ object UserController extends Directives {
     implicit val materializer = ActorMaterializer()
     implicit val executionContext = system.dispatcher
 
-    implicit val userFormat = jsonFormat2(User)
+    implicit val credentialsFormat = jsonFormat2(Credentials)
 
     val route = {
       post {
         path("registration") {
-          entity(as[User]) { user =>
-            UserService.registerNewUser(user) match {
+          entity(as[Credentials]) { credentials =>
+            UserService.registerNewUser(credentials) match {
               case true => complete(StatusCodes.OK)
               case false => complete(StatusCodes.Forbidden)
             }
@@ -33,8 +33,8 @@ object UserController extends Directives {
       } ~
       post {
         path("login") {
-          entity(as[User]) { user =>
-            UserService.login(user) match {
+          entity(as[Credentials]) { credentials =>
+            UserService.login(credentials) match {
               case uuid: UUID => complete(uuid.toString)
               case _ => complete(StatusCodes.Forbidden)
             }

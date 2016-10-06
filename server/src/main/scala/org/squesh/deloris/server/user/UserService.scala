@@ -1,19 +1,17 @@
 package org.squesh.deloris.server.user
 
-import java.util.UUID
-
 object UserService {
-  def login(user: User) : Any = {
-    UserStorage.isUserExisted(user) match {
-      case true => UUID.randomUUID() // todo: add token to SessionManager
+  def login(credentials: Credentials) : Any = {
+    UserStorage.checkCredentials(credentials) match {
+      case true => SessionManager.getToken(credentials.name)
       case false => false
     }
   }
 
-  def registerNewUser(user: User) : Boolean = {
-    UserStorage.isUserExisted(user) match {
-      case true => false
-      case false => UserStorage.registerUser(user); true
+  def registerNewUser(credentials: Credentials) : Boolean = {
+    UserStorage.isUserExisted(credentials.name) match {
+      case true => false // todo: disgusting true=>false traverse
+      case false => UserStorage.registerUser(credentials); true
     }
   }
 }
