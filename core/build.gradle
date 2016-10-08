@@ -14,7 +14,7 @@ tasks.withType(ScalaCompile) {
 }
 
 ext {
-    scalaVersion = '2.11.7'
+
 }
 
 dependencies {
