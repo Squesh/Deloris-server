@@ -8,6 +8,6 @@ object HashApplier {
 
   def hashString(input: String): String = {
     val digest = md.digest(input.getBytes())
-    return String.format("%064x", new java.math.BigInteger(1, digest))
+    String.format("%064x", new java.math.BigInteger(1, digest))
   }
 }

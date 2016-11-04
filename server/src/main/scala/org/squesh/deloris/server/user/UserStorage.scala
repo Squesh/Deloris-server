@@ -7,7 +7,7 @@ import scala.collection.mutable
  */
 
 object UserStorage {
-  val users = new mutable.HashMap[String, String]() // login -> password ?
+  val users = new mutable.HashMap[String, String]() // login -> hash
 
   def isUserExisted(name: String): Boolean = {
     users.contains(name)

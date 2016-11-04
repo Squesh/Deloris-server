@@ -14,7 +14,7 @@ tasks.withType(ScalaCompile) {
 }
 
 ext {
-    akkaPersistenceCassandraVersion = '0.18'
+
 }
 
 dependencies {
@@ -26,5 +26,4 @@ dependencies {
     compile "com.typesafe.akka:akka-http-experimental_2.11:${akkaVersion}"
     compile "com.typesafe.akka:akka-http-spray-json-experimental_2.11:${akkaVersion}"
     compile "com.typesafe.akka:akka-slf4j_2.11:${akkaVersion}"
-    compile "com.typesafe.akka:akka-persistence-cassandra_2.11:${akkaPersistenceCassandraVersion}"
 }

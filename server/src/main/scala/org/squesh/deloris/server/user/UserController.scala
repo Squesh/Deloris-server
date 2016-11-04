@@ -40,6 +40,8 @@ object UserController extends Directives {
             }
           }
         }
+      }
+//      } ~
 //        pathPrefix("reg" / Remaining) { key =>
 //          entity(as[User]) { user =>
 //            complete {
@@ -47,7 +49,6 @@ object UserController extends Directives {
 //            }
 //          }
 //        }
-      }
     }
 
     val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)

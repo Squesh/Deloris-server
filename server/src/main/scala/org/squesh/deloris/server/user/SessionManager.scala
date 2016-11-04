@@ -13,12 +13,6 @@ object SessionManager {
   }
 
   def getToken(name: String): UUID = {
-    val token = sessionTokens.get(name)
-    if (token.isDefined) {
-      token.get
-    } else {
-      sessionTokens.put(name, UUID.randomUUID())
-      sessionTokens.get(name).get
-    }
+    sessionTokens.getOrElseUpdate(name, UUID.randomUUID())
   }
 }
